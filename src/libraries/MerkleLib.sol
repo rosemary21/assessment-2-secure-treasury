@@ -19,7 +19,6 @@ library MerkleLib {
 
         for (uint256 i; i < len; ) {
             bytes32 sibling = proof[i];
-            // Sort pair so proof direction is implicit
             computed = (computed < sibling)
                 ? keccak256(abi.encodePacked(computed, sibling))
                 : keccak256(abi.encodePacked(sibling, computed));

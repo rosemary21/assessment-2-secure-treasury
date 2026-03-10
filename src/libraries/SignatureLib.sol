@@ -38,7 +38,6 @@ bytes32 internal constant APPROVAL_TYPEHASH = keccak256(
             v := byte(0, calldataload(add(signature.offset, 64)))
         }
 
-        // Reject high-s (malleability) — return zero rather than revert
         if (uint256(s) > HALF_N) return address(0);
 
         if (v < 27) v += 27;
