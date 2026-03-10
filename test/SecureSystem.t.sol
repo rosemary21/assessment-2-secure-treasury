@@ -216,9 +216,6 @@ contract SecureSystemTest is Test {
     }
 
 
-
-  
-
     function test_Exploit_SignatureReplay() public {
         bytes32 pid = keccak256("replay"); bytes32 ah = keccak256("data");
         _activate(SIGNER);

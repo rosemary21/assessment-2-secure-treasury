@@ -12,19 +12,23 @@ contract GovernanceAttack is IGovernanceAttack {
 
 
 
-
 modifier onlyCoordinator() {
         if (msg.sender != coordinator) revert GG_OnlyCoordinator();
         _;
 }
 
 struct DrainState {
-        uint256 limitBps;        
-        uint256 dailyDrained;  
+        uint256 limitBps;
+        uint256 dailyDrained;
+        uint256 dayTimestamp;
  }
 
 error GG_OnlyCoordinator();
 error GG_DrainLimitExceeded(address token, uint256 requested, uint256 remaining);
+
+    bool private _paused;
+
+    function isPaused() external view returns (bool) { return _paused; }
 
 
  mapping(address => DrainState)      private _drain;
@@ -36,6 +40,12 @@ error GG_DrainLimitExceeded(address token, uint256 requested, uint256 remaining)
         uint256 blockNumber;
     }
 
+
+ function _getBalance(address token) internal view returns (uint256) {
+        if (token == address(0)) return address(this).balance;
+        (bool ok, bytes memory data) = token.staticcall(abi.encodeWithSignature("balanceOf(address)", address(this)));
+        return (ok && data.length >= 32) ? abi.decode(data, (uint256)) : 0;
+    }
 
  function checkAndRecordDrain(address token, uint256 amount) external onlyCoordinator {
         DrainState storage d = _drain[token];
