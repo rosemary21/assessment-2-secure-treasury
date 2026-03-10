@@ -4,7 +4,7 @@ interface IAuthorizationLayer {
 
     struct SignerState {
         bool    active;
-        uint256 nonce;  // incremented on each consumed signature
+        uint256 nonce;  
     }
 
      event SignatureConsumed(

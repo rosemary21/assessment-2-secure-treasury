@@ -13,11 +13,11 @@ interface IAction {
 
 struct ProposalAction { 
         ActionType actionType;
-        address    target;     // token address (TRANSFER) or call target (CALL/UPGRADE)
-        address    recipient;  // destination for TRANSFER
-        uint256    value;      // native ETH attached to CALL
-        uint256    amount;     // token quantity for TRANSFER
-        bytes      callData;   // ABI-encoded calldata for CALL / UPGRADE
+        address    target;     
+        address    recipient;  
+        uint256    value;     
+        uint256    amount;    
+        bytes      callData;   
     }
 
     
