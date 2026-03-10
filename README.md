@@ -1,66 +1,18 @@
-## Foundry
-
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
-
-Foundry consists of:
-
-- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
-- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
-- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
-- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+ forge test
+Ran 15 tests for test/SecureSystem.t.sol:SecureSystemTest
+[PASS] test_Claim_ETH() (gas: 114032)
+[PASS] test_Exploit_DoubleClaim() (gas: 119126)
+[PASS] test_Exploit_InsufficientETH() (gas: 16066)
+[PASS] test_Exploit_InvalidProof() (gas: 34289)
+[PASS] test_Exploit_Reentrancy() (gas: 525444)
+[PASS] test_Exploit_SignatureReplay() (gas: 95247)
+[PASS] test_Exploit_TimelockReplay() (gas: 138029)
+[PASS] test_Exploit_UnauthorizedAuth() (gas: 16571)
+[PASS] test_Exploit_UnauthorizedTimelock() (gas: 12691)
+[PASS] test_Exploit_WrongKey() (gas: 37966)
+[PASS] test_Propose_ReturnsId() (gas: 25072)
+[PASS] test_Sig_NonceIncrementsAfterUse() (gas: 108595)
+[PASS] test_Sig_Valid() (gas: 83205)
+[PASS] test_Timelock_EtaCorrect() (gas: 112985)
+[PASS] test_Timelock_MinAndMaxBoundary() (gas: 213412)
+Suite result: ok. 15 passed; 0 failed; 0 skipped; finished in 3.32ms (14.72ms CPU time)
